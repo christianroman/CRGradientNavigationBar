@@ -5,7 +5,7 @@ Custom `UINavigationBar` subclass which allows gradient colored bar navigation b
 ![CRGradientNavigationBar-main](http://chroman.me/wp-content/uploads/2013/10/main.png)
 
 Usage
-----------
+-----
 
  - Add the dependency to your Podfile:
 ```ruby

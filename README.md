@@ -83,7 +83,7 @@ Requirements
 
 ## License
 CRGradientNavigationBar is released under the MIT license. See
-[LICENSE.md](https://github.com/chroman/CRGradientNavigationBar/blob/master/LICENSE.md).
+[LICENSE](https://github.com/chroman/CRGradientNavigationBar/blob/master/LICENSE).
 
 Contact me
 ----------

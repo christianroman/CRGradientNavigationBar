@@ -29,13 +29,18 @@ UINavigationController *navigationController = [[UINavigationController alloc] i
 m
 
 - Use an NSArray to set the gradient colors (You can set unlimited colors):
+```objc
+UIColor *firstColor = [UIColor colorWithRed:255.0f/255.0f green:42.0f/255.0f blue:104.0f/255.0f alpha:1.0f];
+UIColor *secondColor = [UIColor colorWithRed:255.0f/255.0f green:90.0f/255.0f blue:58.0f/255.0f alpha:1.0f];
+NSArray *colors = [NSArray arrayWithObjects:(id)firstColor.CGColor, (id)secondColor.CGColor, nil];
+```
 
 - Set the gradient colors via NSArray using UIAppearance `setBarTintGradientColors:` method:
 ```objc
 [[CRGradientNavigationBar appearance] setBarTintGradientColors:colors];
 ```
 
-- Remember to set (YES) or not (NO) to translucent value using `setTranslucent:` method:
+- Remember to set (**YES**) or not (**NO**) to translucent value using `setTranslucent:` method:
 ```objc
 [[navigationController navigationBar] setTranslucent:NO];
 ```

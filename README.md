@@ -7,38 +7,38 @@ Custom `UINavigationBar` subclass which allows gradient colored bar navigation b
 Usage
 -----
 
- - Add the dependency to your Podfile:
+ 1. Add the dependency to your Podfile:
 ```ruby
 platform :ios
 pod 'CRGradientNavigationBar'
 ...
 ```
 
- - Run `pod install` to install the dependencies.
+ 1. Run `pod install` to install the dependencies.
 
- - Import the header file wherever you want to use the gradient colored navigation bar:
+ 1. Import the header file wherever you want to use the gradient colored navigation bar:
 ```objc
 #import "CRGradientNavigationBar.h"
 ```
 
-- Use with UINavigationController's `initWithNavigationBarClass:toolbarClass:` method:
+ 1. Use with UINavigationController's `initWithNavigationBarClass:toolbarClass:` method:
 ```objc
 UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[CRGradientNavigationBar class] toolbarClass:nil];
 ```
 
-- Use an `NSArray` to set the gradient colors (You can set unlimited colors):
+ 1. Use an `NSArray` to set the gradient colors (You can set unlimited colors):
 ```objc
 UIColor *firstColor = [UIColor colorWithRed:255.0f/255.0f green:42.0f/255.0f blue:104.0f/255.0f alpha:1.0f];
 UIColor *secondColor = [UIColor colorWithRed:255.0f/255.0f green:90.0f/255.0f blue:58.0f/255.0f alpha:1.0f];
 NSArray *colors = [NSArray arrayWithObjects:(id)firstColor.CGColor, (id)secondColor.CGColor, nil];
 ```
 
-- Set the gradient colors via NSArray using UIAppearance `setBarTintGradientColors:` method:
+ 1. Set the gradient colors via NSArray using UIAppearance `setBarTintGradientColors:` method:
 ```objc
 [[CRGradientNavigationBar appearance] setBarTintGradientColors:colors];
 ```
 
-- Remember to set (**YES**) or not (**NO**) to translucent value using `setTranslucent:` method:
+ 1. Remember to set (**YES**) or not (**NO**) to translucent value using `setTranslucent:` method:
 ```objc
 [[navigationController navigationBar] setTranslucent:NO];
 ```

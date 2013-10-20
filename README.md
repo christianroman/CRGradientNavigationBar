@@ -18,7 +18,7 @@ pod 'CRGradientNavigationBar'
 
  1. Import the header file wherever you want to use the gradient colored navigation bar:
 ```objc
-#import "CRGradientNavigationBar.h"
+#import <CRGradientNavigationBar/CRGradientNavigationBar.h>
 ```
 
  1. Use with UINavigationController's `initWithNavigationBarClass:toolbarClass:` method:

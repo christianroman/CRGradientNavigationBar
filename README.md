@@ -26,7 +26,7 @@ pod 'CRGradientNavigationBar'
 UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[CRGradientNavigationBar class] toolbarClass:nil];
 ```
 
-
+.
 
 - Use an NSArray to set the gradient colors (You can set unlimited colors):
 ```objc

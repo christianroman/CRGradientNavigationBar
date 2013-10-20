@@ -7,39 +7,78 @@ Custom `UINavigationBar` subclass which allows gradient colored bar navigation b
 Usage
 ----------
 
- - Add `CRGradientNavigationBar.m` and `CRGradientNavigationBar.h` files to your XCode Project
- - Use with UINavigationController's `initWithNavigationBarClass:toolbarClass:` method (example):
+ - Add the dependency to your Podfile:
 
-```objective-c
-UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[CRGradientNavigationBar class] toolbarClass:nil];
-
-UIColor *firstColor = [UIColor colorWithRed:255.0f/255.0f green:42.0f/255.0f blue:104.0f/255.0f alpha:1.0f];
-UIColor *secondColor = [UIColor colorWithRed:255.0f/255.0f green:90.0f/255.0f blue:58.0f/255.0f alpha:1.0f];
-
-NSArray *colors = [NSArray arrayWithObjects:(id)firstColor.CGColor, (id)secondColor.CGColor, nil];
-
-[[CRGradientNavigationBar appearance] setBarTintGradientColors:colors];
-[[navigationController navigationBar] setTranslucent:NO]; // Remember, the default value is YES.
-
-DemoViewController *viewController = [[DemoViewController alloc] init];
-[navigationController setViewControllers:@[viewController]];
-
-[self.window setRootViewController:navigationController];
+```ruby
+platform :ios
+pod 'CRGradientNavigationBar'
+...
 ```
 
-- Set the gradient colors via NSArray (You can use n colors) using UIAppearance `setBarTintGradientColors:` method:
-```objective-c
+ - Run `pod install` to install the dependencies.
+
+ - Import the header file wherever you want to use the gradient colored navigation bar:
+
+```objc
+#import "CRGradientNavigationBar.h"
+```
+
+ - Use with UINavigationController's `initWithNavigationBarClass:toolbarClass:` method:
+```objc
+UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[CRGradientNavigationBar class] toolbarClass:nil];
+```
+
+- Use an NSArray to set the gradient colors (You can set unlimited colors):
+```objc
+UIColor *firstColor = [UIColor colorWithRed:255.0f/255.0f green:42.0f/255.0f blue:104.0f/255.0f alpha:1.0f];
+UIColor *secondColor = [UIColor colorWithRed:255.0f/255.0f green:90.0f/255.0f blue:58.0f/255.0f alpha:1.0f];
+    
+NSArray *colors = [NSArray arrayWithObjects:(id)firstColor.CGColor, (id)secondColor.CGColor, nil];
+```
+
+- Set the gradient colors via NSArray using UIAppearance `setBarTintGradientColors:` method:
+```objc
 [[CRGradientNavigationBar appearance] setBarTintGradientColors:colors];
 ```
 
 - Remember to set (YES) or not (NO) to translucent value using `setTranslucent:` method:
-```objective-c
+```objc
 [[navigationController navigationBar] setTranslucent:NO];
 ```
 
 - You can change the transparency default value (0.5f), just change this line in the `CRGradientNavigationBar.m` file:
-```objective-c
+```objc
 static CGFloat const kDefaultOpacity = 0.5f;
+```
+
+- Full example:
+```objc
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[CRGradientNavigationBar class] toolbarClass:nil];
+    
+    UIColor *firstColor = [UIColor colorWithRed:255.0f/255.0f green:42.0f/255.0f blue:104.0f/255.0f alpha:1.0f];
+    UIColor *secondColor = [UIColor colorWithRed:255.0f/255.0f green:90.0f/255.0f blue:58.0f/255.0f alpha:1.0f];
+    
+    NSArray *colors = [NSArray arrayWithObjects:(id)firstColor.CGColor, (id)secondColor.CGColor, nil];
+    //NSArray *colors = [NSArray arrayWithObjects:(id)UIColorFromRGB(0xf16149).CGColor, (id)UIColorFromRGB(0xf14959).CGColor, nil];
+    
+    [[CRGradientNavigationBar appearance] setBarTintGradientColors:colors];
+    [[navigationController navigationBar] setTranslucent:NO]; // Remember, the default value is YES.
+    
+    DemoViewController *viewController = [[DemoViewController alloc] init];
+    [navigationController setViewControllers:@[viewController]];
+    
+    [self.window setRootViewController:navigationController];
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    return YES;
+}
 ```
 
 Example gradient combinations
@@ -61,7 +100,7 @@ Example gradient combinations
 
 * If you need just **one** color use UIAppearance `setBarTintColor:` method:
 
-```objective-c
+```objc
 [[CRGradientNavigationBar appearance] setBarTintColor:UIColorFromRGB(0xEE695D)];
 ```
 

@@ -43,12 +43,12 @@ NSArray *colors = [NSArray arrayWithObjects:(id)firstColor.CGColor, (id)secondCo
 [[navigationController navigationBar] setTranslucent:NO];
 ```
 
-- You can change the transparency default value (**0.5f**), just change this line in the `CRGradientNavigationBar.m` file:
+You can change the transparency default value (**0.5f**), just change this line in the `CRGradientNavigationBar.m` file:
 ```objc
 static CGFloat const kDefaultOpacity = 0.5f;
 ```
 
-- **Full example**:
+**Full example:**
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

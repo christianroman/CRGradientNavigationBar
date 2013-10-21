@@ -1,6 +1,6 @@
 CRGradientNavigationBar
 =======================
-Custom `UINavigationBar` subclass which allows gradient colored bar navigation bars on iOS 7.
+Custom `UINavigationBar` subclass which allows gradient colored navigation bars on iOS 7.
 
 ![CRGradientNavigationBar-main](http://chroman.me/wp-content/uploads/2013/10/main.png)
 

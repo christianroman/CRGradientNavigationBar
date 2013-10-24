@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '7.0'
   s.source_files  = 'CRGradientNavigationBar/*.{h,m}'
   s.requires_arc = true
-  s.frameworks = 'QuartzCore'
+  s.frameworks = 'UIKit', 'QuartzCore'
 
 end

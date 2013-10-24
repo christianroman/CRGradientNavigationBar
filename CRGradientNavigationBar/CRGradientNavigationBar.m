@@ -30,9 +30,20 @@ static CGFloat const kstatusBarHeight = 20.0f;
         [self.layer addSublayer:self.gradientLayer];
     }
     
-    // I'm not sure if this is the better place to clear barTintColor to support translucent.
-    self.barTintColor = [UIColor clearColor];
-    self.gradientLayer.colors = barTintGradientColors;
+    NSMutableArray *barTintGradientCGColors = nil;
+    if (barTintGradientColors != nil) {
+        barTintGradientCGColors = [NSMutableArray arrayWithCapacity:[barTintGradientColors count]];
+        for (id color in barTintGradientColors) {
+            if ([color isKindOfClass:[UIColor class]]) {
+                [barTintGradientCGColors addObject:(id)[color CGColor]];
+            } else {
+                [barTintGradientCGColors addObject:color];
+            }
+        }
+        self.barTintColor = [UIColor clearColor];
+    }
+    
+    self.gradientLayer.colors = barTintGradientCGColors;
 }
 
 #pragma mark - UIView

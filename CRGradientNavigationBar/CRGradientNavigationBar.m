@@ -7,7 +7,6 @@
 //
 
 #import "CRGradientNavigationBar.h"
-#import <QuartzCore/QuartzCore.h>
 
 @interface CRGradientNavigationBar ()
 

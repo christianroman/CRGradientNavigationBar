@@ -21,6 +21,7 @@
 		228F3D6B181474AE00DB93BA /* GradientNavigationBarDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 228F3D6A181474AE00DB93BA /* GradientNavigationBarDemoTests.m */; };
 		228F3D761814750100DB93BA /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 228F3D751814750100DB93BA /* DemoViewController.m */; };
 		228F3D7E1814756C00DB93BA /* CRGradientNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 228F3D7D1814756C00DB93BA /* CRGradientNavigationBar.m */; };
+		22A74011181999FF008F2C92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A74010181999FF008F2C92 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		228F3D751814750100DB93BA /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
 		228F3D7C1814756C00DB93BA /* CRGradientNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRGradientNavigationBar.h; sourceTree = "<group>"; };
 		228F3D7D1814756C00DB93BA /* CRGradientNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRGradientNavigationBar.m; sourceTree = "<group>"; };
+		22A74010181999FF008F2C92 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22A74011181999FF008F2C92 /* QuartzCore.framework in Frameworks */,
 				228F3D48181474AE00DB93BA /* CoreGraphics.framework in Frameworks */,
 				228F3D4A181474AE00DB93BA /* UIKit.framework in Frameworks */,
 				228F3D46181474AE00DB93BA /* Foundation.framework in Frameworks */,
@@ -103,6 +106,7 @@
 		228F3D44181474AE00DB93BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22A74010181999FF008F2C92 /* QuartzCore.framework */,
 				228F3D45181474AE00DB93BA /* Foundation.framework */,
 				228F3D47181474AE00DB93BA /* CoreGraphics.framework */,
 				228F3D49181474AE00DB93BA /* UIKit.framework */,
@@ -462,6 +466,7 @@
 				228F3D70181474AE00DB93BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		228F3D71181474AE00DB93BA /* Build configuration list for PBXNativeTarget "GradientNavigationBarDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +475,7 @@
 				228F3D73181474AE00DB93BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

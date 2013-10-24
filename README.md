@@ -61,8 +61,8 @@ static CGFloat const kDefaultOpacity = 0.5f;
     UIColor *firstColor = [UIColor colorWithRed:255.0f/255.0f green:42.0f/255.0f blue:104.0f/255.0f alpha:1.0f];
     UIColor *secondColor = [UIColor colorWithRed:255.0f/255.0f green:90.0f/255.0f blue:58.0f/255.0f alpha:1.0f];
     
-    NSArray *colors = [NSArray arrayWithObjects:(id)firstColor.CGColor, (id)secondColor.CGColor, nil];
-    //NSArray *colors = [NSArray arrayWithObjects:(id)UIColorFromRGB(0xf16149).CGColor, (id)UIColorFromRGB(0xf14959).CGColor, nil];
+    NSArray *colors = [NSArray arrayWithObjects:firstColor, secondColor, nil];
+    // or NSArray *colors = [NSArray arrayWithObjects:(id)UIColorFromRGB(0xf16149).CGColor, (id)UIColorFromRGB(0xf14959).CGColor, nil];
     
     [[CRGradientNavigationBar appearance] setBarTintGradientColors:colors];
     [[navigationController navigationBar] setTranslucent:NO]; // Remember, the default value is YES.

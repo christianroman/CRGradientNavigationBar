@@ -71,11 +71,10 @@ static CGFloat const kDefaultOpacity = 0.5f;
     self.gradientLayer.colors = colors;
 }
 
-- (void)didMoveToWindow
+- (void)didAddSubview:(UIView *)subview
 {
-    [super didMoveToWindow];
+    [super didAddSubview:subview];
     
-    // put the graident layer at index 1
     [self.layer insertSublayer:self.gradientLayer atIndex:1];
 }
 

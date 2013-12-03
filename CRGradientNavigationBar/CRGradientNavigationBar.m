@@ -22,9 +22,6 @@ static CGFloat const kstatusBarHeight = 20.0f;
 
 - (void)setBarTintGradientColors:(NSArray *)barTintGradientColors
 {
-    if ([[[UIDevice currentDevice] systemVersion] integerValue] < 7)
-        return;
-    
     if (self.gradientLayer == nil) {
         self.gradientLayer = [CAGradientLayer layer];
         self.gradientLayer.opacity = self.translucent ? kDefaultOpacity : 1.0f;
@@ -41,7 +38,17 @@ static CGFloat const kstatusBarHeight = 20.0f;
                 [barTintGradientCGColors addObject:color];
             }
         }
-        self.barTintColor = [UIColor clearColor];
+        
+        if ( [self respondsToSelector:@selector(setBarTintColor:)] )
+        {
+            self.barTintColor = [UIColor clearColor];
+        }
+        else
+        {
+            self.tintColor = [UIColor clearColor];
+            // stops the gradient on iOS 6 UINavigationBar
+            [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+        }
     }
     
     self.gradientLayer.colors = barTintGradientCGColors;
@@ -52,9 +59,6 @@ static CGFloat const kstatusBarHeight = 20.0f;
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    if ([[[UIDevice currentDevice] systemVersion] integerValue] < 7)
-        return;
     
     if (self.gradientLayer != nil) {
         self.gradientLayer.frame = CGRectMake(0, 0 - kstatusBarHeight, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + kstatusBarHeight);

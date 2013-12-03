@@ -71,13 +71,6 @@ static CGFloat const kDefaultOpacity = 0.5f;
     self.gradientLayer.colors = colors;
 }
 
-- (void)didAddSubview:(UIView *)subview
-{
-    [super didAddSubview:subview];
-    
-    [self.layer insertSublayer:self.gradientLayer atIndex:1];
-}
-
 #pragma mark - UIView
 
 - (void)layoutSubviews
@@ -98,6 +91,9 @@ static CGFloat const kDefaultOpacity = 0.5f;
             // iOS 6
             self.gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
         }
+        
+        // make sure the graident layer is at position 1
+        [self.layer insertSublayer:self.gradientLayer atIndex:1];
     }
 }
 

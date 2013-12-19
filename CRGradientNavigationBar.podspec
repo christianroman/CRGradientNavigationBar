@@ -8,7 +8,8 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Christian Roman" => "chroman16@gmail.com" }
   s.source       = {
-    :git => "https://github.com/NebulaFox/CRGradientNavigationBar.git",
+    :git => "https://github.com/chroman/CRGradientNavigationBar.git",
+    :tag => "#{s.version}"
   }
 
   s.platform     = :ios, '6.0'

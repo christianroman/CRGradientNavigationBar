@@ -1,6 +1,6 @@
 CRGradientNavigationBar
 =======================
-Custom `UINavigationBar` subclass which allows gradient coloured navigation bar on iOS 7.
+Custom `UINavigationBar` subclass which allows gradient coloured navigation bar on iOS 6/7.
 
 ![CRGradientNavigationBar-main](http://chroman.me/wp-content/uploads/2013/10/main.png)
 
@@ -114,7 +114,7 @@ Translucent demo 2:
 
 Requirements
 ----------
-* iOS 7.0 or higher
+* iOS 6.0 or higher
 * ARC
 
 ## License

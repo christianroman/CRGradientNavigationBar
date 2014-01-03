@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "CRGradientNavigationBar"
-  s.version      = "0.3.1"
+  s.version      = "0.3.2"
   s.summary      = "Custom UINavigationBar subclass which allows gradient coloured navigation bar on iOS 6/7."
   s.homepage     = "https://github.com/chroman/CRGradientNavigationBar"
   s.screenshots  = "http://chroman.me/wp-content/uploads/2013/10/main.png"

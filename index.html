@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>CRGradientNavigationBar by chroman</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>CRGradientNavigationBar</h1>
+        <p>Custom UINavigationBar subclass which allows gradient coloured navigation bar on iOS 7.</p>
+
+        <p class="view"><a href="https://github.com/chroman/CRGradientNavigationBar">View the Project on GitHub <small>chroman/CRGradientNavigationBar</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/chroman/CRGradientNavigationBar/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/chroman/CRGradientNavigationBar/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/chroman/CRGradientNavigationBar">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="crgradientnavigationbar" class="anchor" href="#crgradientnavigationbar"><span class="octicon octicon-link"></span></a>CRGradientNavigationBar</h1>
+
+<p>Custom <code>UINavigationBar</code> subclass which allows gradient coloured navigation bar on iOS 6/7.</p>
+
+<p><img src="http://chroman.me/wp-content/uploads/2013/10/main.png" alt="CRGradientNavigationBar-main"></p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<ol>
+<li>
+<p>Add the dependency to your Podfile:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="n">platform</span> <span class="ss">:ios</span>
+<span class="n">pod</span> <span class="s1">'CRGradientNavigationBar'</span>
+<span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</pre></div>
+</li>
+<li><p>Run <code>pod install</code> to install the dependencies.</p></li>
+<li>
+<p>Import the header file wherever you want to use the gradient colored navigation bar:</p>
+
+<div class="highlight highlight-objc"><pre><span class="cp">#import "CRGradientNavigationBar.h"</span>
+</pre></div>
+</li>
+<li>
+<p>Use with UINavigationController's <code>initWithNavigationBarClass:toolbarClass:</code> method:</p>
+
+<div class="highlight highlight-objc"><pre><span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UINavigationController</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithNavigationBarClass</span><span class="o">:</span><span class="p">[</span><span class="n">CRGradientNavigationBar</span> <span class="n">class</span><span class="p">]</span> <span class="n">toolbarClass</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+</pre></div>
+</li>
+<li>
+<p>Use an <code>NSArray</code> to set the gradient colors (You can set unlimited colors):</p>
+
+<div class="highlight highlight-objc"><pre><span class="n">UIColor</span> <span class="o">*</span><span class="n">firstColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="n">colorWithRed</span><span class="o">:</span><span class="mf">255.0f</span><span class="o">/</span><span class="mf">255.0f</span> <span class="n">green</span><span class="o">:</span><span class="mf">42.0f</span><span class="o">/</span><span class="mf">255.0f</span> <span class="n">blue</span><span class="o">:</span><span class="mf">104.0f</span><span class="o">/</span><span class="mf">255.0f</span> <span class="n">alpha</span><span class="o">:</span><span class="mf">1.0f</span><span class="p">];</span>
+<span class="n">UIColor</span> <span class="o">*</span><span class="n">secondColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="n">colorWithRed</span><span class="o">:</span><span class="mf">255.0f</span><span class="o">/</span><span class="mf">255.0f</span> <span class="n">green</span><span class="o">:</span><span class="mf">90.0f</span><span class="o">/</span><span class="mf">255.0f</span> <span class="n">blue</span><span class="o">:</span><span class="mf">58.0f</span><span class="o">/</span><span class="mf">255.0f</span> <span class="n">alpha</span><span class="o">:</span><span class="mf">1.0f</span><span class="p">];</span>
+<span class="n">NSArray</span> <span class="o">*</span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">arrayWithObjects</span><span class="o">:</span><span class="n">firstColor</span><span class="p">,</span> <span class="n">secondColor</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
+</pre></div>
+</li>
+<li>
+<p>Set the gradient colors via NSArray using UIAppearance <code>setBarTintGradientColors:</code> method:</p>
+
+<div class="highlight highlight-objc"><pre><span class="p">[[</span><span class="n">CRGradientNavigationBar</span> <span class="n">appearance</span><span class="p">]</span> <span class="n">setBarTintGradientColors</span><span class="o">:</span><span class="n">colors</span><span class="p">];</span>
+</pre></div>
+</li>
+<li>
+<p>Remember to set (<strong>YES</strong>) or not (<strong>NO</strong>) to translucent value using <code>setTranslucent:</code> method:</p>
+
+<div class="highlight highlight-objc"><pre><span class="p">[[</span><span class="n">navigationController</span> <span class="n">navigationBar</span><span class="p">]</span> <span class="n">setTranslucent</span><span class="o">:</span><span class="nb">NO</span><span class="p">];</span>
+</pre></div>
+</li>
+</ol><p>You can change the transparency default value (<strong>0.5f</strong>), just change this line in the <code>CRGradientNavigationBar.m</code> file:</p>
+
+<div class="highlight highlight-objc"><pre><span class="k">static</span> <span class="n">CGFloat</span> <span class="k">const</span> <span class="n">kDefaultOpacity</span> <span class="o">=</span> <span class="mf">0.5f</span><span class="p">;</span>
+</pre></div>
+
+<p><strong>Full example:</strong></p>
+
+<div class="highlight highlight-objc"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span>
+<span class="p">{</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">window</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIWindow</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithFrame</span><span class="o">:</span><span class="p">[[</span><span class="n">UIScreen</span> <span class="n">mainScreen</span><span class="p">]</span> <span class="n">bounds</span><span class="p">]];</span>
+
+    <span class="p">[[</span><span class="n">UIApplication</span> <span class="n">sharedApplication</span><span class="p">]</span> <span class="n">setStatusBarStyle</span><span class="o">:</span><span class="n">UIStatusBarStyleLightContent</span><span class="p">];</span>
+
+    <span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UINavigationController</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithNavigationBarClass</span><span class="o">:</span><span class="p">[</span><span class="n">CRGradientNavigationBar</span> <span class="n">class</span><span class="p">]</span> <span class="n">toolbarClass</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+
+    <span class="n">UIColor</span> <span class="o">*</span><span class="n">firstColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="n">colorWithRed</span><span class="o">:</span><span class="mf">255.0f</span><span class="o">/</span><span class="mf">255.0f</span> <span class="n">green</span><span class="o">:</span><span class="mf">42.0f</span><span class="o">/</span><span class="mf">255.0f</span> <span class="n">blue</span><span class="o">:</span><span class="mf">104.0f</span><span class="o">/</span><span class="mf">255.0f</span> <span class="n">alpha</span><span class="o">:</span><span class="mf">1.0f</span><span class="p">];</span>
+    <span class="n">UIColor</span> <span class="o">*</span><span class="n">secondColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="n">colorWithRed</span><span class="o">:</span><span class="mf">255.0f</span><span class="o">/</span><span class="mf">255.0f</span> <span class="n">green</span><span class="o">:</span><span class="mf">90.0f</span><span class="o">/</span><span class="mf">255.0f</span> <span class="n">blue</span><span class="o">:</span><span class="mf">58.0f</span><span class="o">/</span><span class="mf">255.0f</span> <span class="n">alpha</span><span class="o">:</span><span class="mf">1.0f</span><span class="p">];</span>
+
+    <span class="n">NSArray</span> <span class="o">*</span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">arrayWithObjects</span><span class="o">:</span><span class="n">firstColor</span><span class="p">,</span> <span class="n">secondColor</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
+    <span class="c1">// or NSArray *colors = [NSArray arrayWithObjects:(id)UIColorFromRGB(0xf16149).CGColor, (id)UIColorFromRGB(0xf14959).CGColor, nil];</span>
+
+    <span class="p">[[</span><span class="n">CRGradientNavigationBar</span> <span class="n">appearance</span><span class="p">]</span> <span class="n">setBarTintGradientColors</span><span class="o">:</span><span class="n">colors</span><span class="p">];</span>
+    <span class="p">[[</span><span class="n">navigationController</span> <span class="n">navigationBar</span><span class="p">]</span> <span class="n">setTranslucent</span><span class="o">:</span><span class="nb">NO</span><span class="p">];</span> <span class="c1">// Remember, the default value is YES.</span>
+
+    <span class="n">DemoViewController</span> <span class="o">*</span><span class="n">viewController</span> <span class="o">=</span> <span class="p">[[</span><span class="n">DemoViewController</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">navigationController</span> <span class="n">setViewControllers</span><span class="o">:</span><span class="p">@[</span><span class="n">viewController</span><span class="p">]];</span>
+
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">window</span> <span class="n">setRootViewController</span><span class="o">:</span><span class="n">navigationController</span><span class="p">];</span>
+
+    <span class="n">self</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="n">whiteColor</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">window</span> <span class="n">makeKeyAndVisible</span><span class="p">];</span>
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="example-gradient-combinations" class="anchor" href="#example-gradient-combinations"><span class="octicon octicon-link"></span></a>Example gradient combinations</h2>
+
+<ul>
+<li>Translucent = <strong>NO</strong>
+</li>
+</ul><p><img src="http://chroman.me/wp-content/uploads/2013/10/CRGradientNavigationBar-sample1.png" alt="CRGradientNavigationBar-sample1"></p>
+
+<p><img src="http://chroman.me/wp-content/uploads/2013/10/CRGradientNavigationBar-sample2.png" alt="CRGradientNavigationBar-sample2"></p>
+
+<ul>
+<li>Translucent = <strong>YES</strong>
+</li>
+</ul><p><img src="http://chroman.me/wp-content/uploads/2013/10/CRGradientNavigationBar-sample3.png" alt="CRGradientNavigationBar-sample3"></p>
+
+<ul>
+<li>Example using three different colors and translucent` value to <strong>NO</strong>
+</li>
+</ul><p><img src="http://chroman.me/wp-content/uploads/2013/10/CRGradientNavigationBar-combination.png" alt="CRGradientNavigationBar-combination"></p>
+
+<ul>
+<li>If you need just <strong>one</strong> color use UIAppearance <code>setBarTintColor:</code> method:</li>
+</ul><div class="highlight highlight-objc"><pre><span class="p">[[</span><span class="n">CRGradientNavigationBar</span> <span class="n">appearance</span><span class="p">]</span> <span class="n">setBarTintColor</span><span class="o">:</span><span class="n">UIColorFromRGB</span><span class="p">(</span><span class="mh">0xEE695D</span><span class="p">)];</span>
+</pre></div>
+
+<p><img src="http://chroman.me/wp-content/uploads/2013/10/simple.png" alt="CRGradientNavigationBar-simple"></p>
+
+<p>Translucent demo 1:</p>
+
+<p><img src="http://chroman.me/wp-content/uploads/2013/10/CRGradientNavigationBar-demo1.gif" alt="CRGradientNavigationBar-demo1"></p>
+
+<p>Translucent demo 2:</p>
+
+<p><img src="http://chroman.me/wp-content/uploads/2013/10/CRGradientNavigationBar-demo2.gif" alt="CRGradientNavigationBar-demo1"></p>
+
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>iOS 6.0 or higher</li>
+<li>ARC</li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>CRGradientNavigationBar is released under the MIT license. See
+<a href="https://github.com/chroman/CRGradientNavigationBar/blob/master/LICENSE">LICENSE</a>.</p>
+
+<h2>
+<a name="contact-me" class="anchor" href="#contact-me"><span class="octicon octicon-link"></span></a>Contact me</h2>
+
+<p><strong>Christian Roman</strong>  </p>
+
+<p>Website: <a href="http://chroman.me">http://chroman.me</a></p>
+
+<p>Contact: <a href="mailto:chroman16@gmail.com">chroman16@gmail.com</a></p>
+
+<p>Twitter: <a href="http://twitter.com/chroman">http://twitter.com/chroman</a> </p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/chroman">chroman</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

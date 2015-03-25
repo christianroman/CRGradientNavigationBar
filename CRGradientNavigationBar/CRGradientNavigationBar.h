@@ -10,6 +10,14 @@
 
 @interface CRGradientNavigationBar : UINavigationBar
 
-- (void)setBarTintGradientColors:(NSArray *)barTintGradientColors;
+/*!
+ Opacity of navigation bar. Default is 0.5.
+ */
+@property (nonatomic, assign) CGFloat opacity;
+
+/*!
+ The array of UIColors or CGColors
+ */
+@property (nonatomic, strong) NSArray *barTintGradientColors;
 
 @end

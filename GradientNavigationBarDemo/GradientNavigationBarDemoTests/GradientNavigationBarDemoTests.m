@@ -69,21 +69,45 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-   
-    
-    
     NSLog(@"%d", deg);
     NSLog(@"%@ %@", NSStringFromCGPoint(A), NSStringFromCGPoint(B));
     
     
 }
+
+#define degreesToRadians(angleDegrees) (angleDegrees * M_PI / 180.0)
+#define radiansToDegrees(angleRadians) (angleRadians * 180.0 / M_PI)
+
+#define constraint1(N) (- M_PI_4 + M_PI_2 * N)
+#define constraint2(N) (M_PI_4+M_PI_2*N)
+#define constraint3(N) (M_PI_2+M_PI_4+M_PI_2*N)
+
+- (void)testNormalizeAngle
+{
+    
+    for (int i = 0; i < 360; i++)
+    {
+        [self normalizeAngle:i];
+    }
+    
+}
+
+- (void)normalizeAngle:(double)angle
+{
+    
+    NSLog(@"  %f",constrainAngle(angle));
+    
+}
+
+double constrainAngle(double x) {
+    x = fmod(x + 45, 180);
+    if (x < 0)
+        x += 135;
+    return x - 45;
+}
+
+
+
 
 
 

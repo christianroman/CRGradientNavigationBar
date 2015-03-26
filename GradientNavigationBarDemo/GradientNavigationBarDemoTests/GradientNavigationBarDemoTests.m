@@ -85,30 +85,46 @@
 - (void)testNormalizeAngle
 {
     
-    for (int i = 0; i < 360; i++)
+    
+    for (int i = 0; i < 720; i++)
     {
         [self normalizeAngle:i];
     }
+    
     
 }
 
 - (void)normalizeAngle:(double)angle
 {
     
-    NSLog(@"  %f",constrainAngle(angle));
+    angle = constrainAngle(angle);
+    
+    double rad = degreesToRadians(angle);
+    
+    
+    for (int N = 0; N < 3; N++)
+    {
+        if ((-M_PI_4+M_PI*N) <= rad && rad < (M_PI_4+M_PI*N))
+        {
+            NSLog(@"Firs condition %f",angle);
+            break;
+        }
+        else if ((M_PI_4+M_PI*N) <= rad && rad < (M_PI_4*3+M_PI*N))
+        {
+            NSLog(@"Second condition %f",angle);
+            break;
+        }
+    }
+    
+    
     
 }
 
 double constrainAngle(double x) {
-    x = fmod(x + 45, 180);
+    x = fmod(x, 360);
     if (x < 0)
-        x += 135;
-    return x - 45;
+        x += 360;
+    return x;
 }
-
-
-
-
-
 
 @end

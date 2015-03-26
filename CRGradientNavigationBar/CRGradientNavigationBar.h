@@ -20,4 +20,9 @@
  */
 @property (nonatomic, strong) NSArray *barTintGradientColors;
 
+/*!
+ Angle for the gradient. Angle of gradient direction in degrees.
+ */
+@property (nonatomic, assign) CGFloat gradientAngle;
+
 @end

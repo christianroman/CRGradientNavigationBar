@@ -9,6 +9,11 @@
 #import "CRGradientNavigationBar.h"
 #import <QuartzCore/QuartzCore.h>
 
+#define degreesToRadians(angleDegrees) (angleDegrees * M_PI / 180.0)
+#define radiansToDegrees(angleRadians) (angleRadians * 180.0 / M_PI)
+#define SWAP(x, y) do { typeof(x) SWAP = x; x = y; y = SWAP; } while (0)
+
+
 @interface CRGradientNavigationBar ()
 
 @property (nonatomic, strong) CAGradientLayer *gradientLayer;
@@ -97,6 +102,58 @@
     // set the graident colours to the laery
     self.gradientLayer.colors = colors;
     _barTintGradientColors = barTintGradientColors;
+}
+
+- (void)setGradientAngle:(CGFloat)gradientAngle
+{
+    gradientAngle = fmod(gradientAngle, 360);
+    if (gradientAngle < 0)
+        gradientAngle += 360;
+    
+    double rad = degreesToRadians(gradientAngle);
+    double xa =0, ya=0, xb=0, yb=0;
+    
+    for (int n = 0; n < 4; n++)
+    {
+        if ((-M_PI_4+M_PI*n) <= rad && rad < (M_PI_4+M_PI*n))
+        {
+            xa = 0;
+            xb = 1;
+            ya = (1 - tan(rad))/2;
+            yb = 1 - ya;
+            
+            if (n % 2) {
+                SWAP(xa, xb);
+                SWAP(ya, yb);
+            }
+            
+            break;
+        }
+        else if ((M_PI_4+M_PI*n) <= rad && rad < (M_PI_4*3+M_PI*n))
+        {
+            yb = 1;
+            ya = 0;
+            
+            // xb > xa
+            xb = (1/tan(rad) + 1)/2;
+            
+            if (n > 0)
+            {
+                // xb<xa
+                xb = (1 - 1/tan(rad))/2;
+                SWAP(ya, yb);
+            }
+            
+            xa = 1 - xb;
+            
+            break;
+        }
+    }
+    
+    self.gradientLayer.startPoint = CGPointMake(xa, ya);
+    self.gradientLayer.endPoint = CGPointMake(xb, yb);
+
+    _gradientAngle = gradientAngle;
 }
 
 #pragma mark - UIView

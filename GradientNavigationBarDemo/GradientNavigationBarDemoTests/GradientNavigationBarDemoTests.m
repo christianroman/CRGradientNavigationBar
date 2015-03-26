@@ -77,16 +77,13 @@
 
 #define degreesToRadians(angleDegrees) (angleDegrees * M_PI / 180.0)
 #define radiansToDegrees(angleRadians) (angleRadians * 180.0 / M_PI)
-
-#define constraint1(N) (- M_PI_4 + M_PI_2 * N)
-#define constraint2(N) (M_PI_4+M_PI_2*N)
-#define constraint3(N) (M_PI_2+M_PI_4+M_PI_2*N)
+#define SWAP(x, y) do { typeof(x) SWAP = x; x = y; y = SWAP; } while (0)
 
 - (void)testNormalizeAngle
 {
     
     
-    for (int i = 0; i < 720; i++)
+    for (int i = 0; i < 720; i = i + 2)
     {
         [self normalizeAngle:i];
     }
@@ -101,24 +98,54 @@
     
     double rad = degreesToRadians(angle);
     
+    double xa, ya, xb, yb;
     
-    for (int N = 0; N < 3; N++)
+    for (int N = 0; N < 2; N++)
     {
         if ((-M_PI_4+M_PI*N) <= rad && rad < (M_PI_4+M_PI*N))
         {
-            NSLog(@"Firs condition %f",angle);
+            xa = 0;
+            xb = 1;
+            ya = (1 - tan(rad))/2;
+            yb = 1 - ya;
+            
+            if (N > 0) {
+                SWAP(xa, xb);
+                SWAP(ya, yb);
+            }
+           
+            NSLog(@"First condition %d, (%f, %f) (%f, %f)", (int)angle, xa, ya, xb, yb);
+            
             break;
         }
         else if ((M_PI_4+M_PI*N) <= rad && rad < (M_PI_4*3+M_PI*N))
         {
-            NSLog(@"Second condition %f",angle);
+//            yb = 1;
+//            ya = 0;
+//            
+//            if (rad > M_PI_2 || N) {
+//                xb = 1/2 - 1/(2 *tan(rad));
+//            }
+//            else
+//            {
+//                xb = 1/(2 *tan(rad)) + 1/2;
+//            }
+//            
+//            if (N)
+//            {
+//                SWAP(ya, yb);
+//            }
+//            
+//            xa = 1 - xb;
+//            
+//            NSLog(@"Second condition %d, (%f, %f) (%f, %f)", (int)angle, xa, ya, xb, yb);
+            
             break;
         }
     }
     
-    
-    
 }
+
 
 double constrainAngle(double x) {
     x = fmod(x, 360);

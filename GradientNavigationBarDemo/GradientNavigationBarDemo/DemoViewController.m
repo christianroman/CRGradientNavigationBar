@@ -7,10 +7,12 @@
 //
 
 #import "DemoViewController.h"
+#import "CRGradientNavigationBar.h"
 
 @interface DemoViewController ()
 
 @property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) NSTimer *timer;
 
 @end
 
@@ -46,6 +48,18 @@
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(updateGradient:) userInfo:nil repeats:YES];
+}
+
+- (void)updateGradient:(NSTimer *)timer
+{
+    static double angle = 0.f;
+    
+    CRGradientNavigationBar *bar = (CRGradientNavigationBar *)self.navigationController.navigationBar;
+    bar.gradientAngle = angle;
+    
+    angle+=3.f;
 }
 
 - (void)didReceiveMemoryWarning

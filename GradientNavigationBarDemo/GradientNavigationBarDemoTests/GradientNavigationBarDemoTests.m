@@ -83,7 +83,7 @@
 {
     
     
-    for (int i = 0; i < 720; i = i + 2)
+    for (int i = 0; i < 720; i = i + 5)
     {
         [self normalizeAngle:i];
     }
@@ -120,25 +120,22 @@
         }
         else if ((M_PI_4+M_PI*N) <= rad && rad < (M_PI_4*3+M_PI*N))
         {
-//            yb = 1;
-//            ya = 0;
-//            
-//            if (rad > M_PI_2 || N) {
-//                xb = 1/2 - 1/(2 *tan(rad));
-//            }
-//            else
-//            {
-//                xb = 1/(2 *tan(rad)) + 1/2;
-//            }
-//            
-//            if (N)
-//            {
-//                SWAP(ya, yb);
-//            }
-//            
-//            xa = 1 - xb;
-//            
-//            NSLog(@"Second condition %d, (%f, %f) (%f, %f)", (int)angle, xa, ya, xb, yb);
+            yb = 1;
+            ya = 0;
+            
+            // xb > xa
+            xb = (1/tan(rad) + 1)/2;
+            
+            if (N > 0)
+            {
+                // xb<xa
+                xb = (1 - 1/tan(rad))/2;
+                SWAP(ya, yb);
+            }
+            
+            xa = 1 - xb;
+
+            NSLog(@"Second condition %d, (%f, %f) (%f, %f)", (int)angle, xa, ya, xb, yb);
             
             break;
         }

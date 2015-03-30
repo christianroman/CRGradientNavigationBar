@@ -31,50 +31,6 @@
     XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 
-- (void)testMath
-{
-    
-    for (int i = 0; i<360; i++)
-    {
-        [self t:i];
-    }
-    
-    
-}
-
-- (void)t:(int)deg
-{
-    double rad = deg * M_PI / 180;
-    
-    CGPoint A, B;
-    
-    
-    
-    if (rad < M_PI_4)
-    {
-        A = CGPointMake(0, (1 - tan(rad))/2);
-        B = CGPointMake(1, 1 - A.y);
-    }
-    else if (M_PI_4 <= rad && rad < M_PI_2)
-    {
-        B = CGPointMake(1/(2 *tan(rad)) + 1/2, 1);
-        A = CGPointMake(1 - B.x, 0);
-    }
-    else if (M_PI_2 <= rad)
-    {
-        B = CGPointMake(1/(2 *tan(rad)) + 1/2 + 1, 1);
-        A = CGPointMake(1 - B.x, 0);
-    }
-    
-    
-    
-    
-    NSLog(@"%d", deg);
-    NSLog(@"%@ %@", NSStringFromCGPoint(A), NSStringFromCGPoint(B));
-    
-    
-}
-
 #define degreesToRadians(angleDegrees) (angleDegrees * M_PI / 180.0)
 #define radiansToDegrees(angleRadians) (angleRadians * 180.0 / M_PI)
 #define SWAP(x, y) do { typeof(x) SWAP = x; x = y; y = SWAP; } while (0)
@@ -82,16 +38,15 @@
 - (void)testNormalizeAngle
 {
     
-    
     for (int i = 0; i < 720; i = i + 5)
     {
-        [self normalizeAngle:i];
+        [self printCoordinates:i];
     }
     
     
 }
 
-- (void)normalizeAngle:(double)angle
+- (void)printCoordinates:(double)angle
 {
     
     angle = constrainAngle(angle);

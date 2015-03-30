@@ -10,9 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #define degreesToRadians(angleDegrees) (angleDegrees * M_PI / 180.0)
-#define radiansToDegrees(angleRadians) (angleRadians * 180.0 / M_PI)
 #define SWAP(x, y) do { typeof(x) SWAP = x; x = y; y = SWAP; } while (0)
-
 
 @interface CRGradientNavigationBar ()
 

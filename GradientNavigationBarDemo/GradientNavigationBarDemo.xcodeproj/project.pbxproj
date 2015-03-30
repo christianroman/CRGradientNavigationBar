@@ -22,6 +22,7 @@
 		228F3D761814750100DB93BA /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 228F3D751814750100DB93BA /* DemoViewController.m */; };
 		228F3D7E1814756C00DB93BA /* CRGradientNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 228F3D7D1814756C00DB93BA /* CRGradientNavigationBar.m */; };
 		22A74011181999FF008F2C92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A74010181999FF008F2C92 /* QuartzCore.framework */; };
+		5203F5D61AC95860001331DB /* CAGradientLayer+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5203F5D51AC95860001331DB /* CAGradientLayer+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		228F3D7C1814756C00DB93BA /* CRGradientNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRGradientNavigationBar.h; sourceTree = "<group>"; };
 		228F3D7D1814756C00DB93BA /* CRGradientNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRGradientNavigationBar.m; sourceTree = "<group>"; };
 		22A74010181999FF008F2C92 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5203F5D41AC95860001331DB /* CAGradientLayer+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAGradientLayer+Extension.h"; sourceTree = "<group>"; };
+		5203F5D51AC95860001331DB /* CAGradientLayer+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAGradientLayer+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +165,8 @@
 			children = (
 				228F3D7C1814756C00DB93BA /* CRGradientNavigationBar.h */,
 				228F3D7D1814756C00DB93BA /* CRGradientNavigationBar.m */,
+				5203F5D41AC95860001331DB /* CAGradientLayer+Extension.h */,
+				5203F5D51AC95860001331DB /* CAGradientLayer+Extension.m */,
 			);
 			name = CRGradientNavigationBar;
 			path = ../CRGradientNavigationBar;
@@ -266,6 +271,7 @@
 				228F3D761814750100DB93BA /* DemoViewController.m in Sources */,
 				228F3D56181474AE00DB93BA /* AppDelegate.m in Sources */,
 				228F3D52181474AE00DB93BA /* main.m in Sources */,
+				5203F5D61AC95860001331DB /* CAGradientLayer+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

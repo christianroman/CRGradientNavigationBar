@@ -21,14 +21,17 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[CRGradientNavigationBar class] toolbarClass:nil];
-    
-    UIColor *firstColor = [UIColor colorWithRed:255.0f/255.0f green:42.0f/255.0f blue:104.0f/255.0f alpha:1.0f];
-    UIColor *secondColor = [UIColor colorWithRed:255.0f/255.0f green:90.0f/255.0f blue:58.0f/255.0f alpha:1.0f];
-    
-    NSArray *colors = [NSArray arrayWithObjects:(id)firstColor.CGColor, (id)secondColor.CGColor, nil];
-    //NSArray *colors = [NSArray arrayWithObjects:(id)UIColorFromRGB(0xf16149).CGColor, (id)UIColorFromRGB(0xf14959).CGColor, nil];
+//    
+//    UIColor *firstColor = [UIColor colorWithRed:255.0f/255.0f green:42.0f/255.0f blue:104.0f/255.0f alpha:1.0f];
+//    UIColor *secondColor = [UIColor colorWithRed:255.0f/255.0f green:90.0f/255.0f blue:58.0f/255.0f alpha:1.0f];
+//    
+//    NSArray *colors = [NSArray arrayWithObjects:(id)firstColor.CGColor, (id)secondColor.CGColor, nil];
+    NSArray *colors = [NSArray arrayWithObjects:(id)UIColorFromRGB(0x0000ff).CGColor, (id)UIColorFromRGB(0xff0000).CGColor, nil];
     
     [[CRGradientNavigationBar appearance] setBarTintGradientColors:colors];
+    
+    [[CRGradientNavigationBar appearance] setGradientAngle:30];
+    
     [[navigationController navigationBar] setTranslucent:NO]; // Remember, the default value is YES.
     
     DemoViewController *viewController = [[DemoViewController alloc] init];

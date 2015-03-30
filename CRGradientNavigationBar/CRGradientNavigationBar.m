@@ -8,6 +8,7 @@
 
 #import "CRGradientNavigationBar.h"
 #import <QuartzCore/QuartzCore.h>
+#import "CAGradientLayer+Extension.h"
 
 @interface CRGradientNavigationBar ()
 
@@ -17,16 +18,42 @@
 
 @implementation CRGradientNavigationBar
 
-static CGFloat const kDefaultOpacity = 0.5f;
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self)
+    {
+        [self performInit];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        [self performInit];
+    }
+    return self;
+}
+
+#pragma mark - Properties
+
+- (void)setOpacity:(CGFloat)opacity
+{
+    self.gradientLayer.opacity = self.translucent ? opacity : 1.0f;
+    _opacity = opacity;
+}
+
+- (void)setTranslucent:(BOOL)translucent
+{
+    [super setTranslucent:translucent];
+    self.opacity = _opacity;
+}
 
 - (void)setBarTintGradientColors:(NSArray *)barTintGradientColors
 {
-    // create the gradient layer
-    if (self.gradientLayer == nil) {
-        self.gradientLayer = [CAGradientLayer layer];
-        self.gradientLayer.opacity = self.translucent ? kDefaultOpacity : 1.0f;
-    }
-    
     NSMutableArray * colors = nil;
     if (barTintGradientColors != nil)
     {
@@ -35,6 +62,7 @@ static CGFloat const kDefaultOpacity = 0.5f;
         // determine elements in the array are colours
         // and add them to the colors array
         [barTintGradientColors enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            
             if ([obj isKindOfClass:[UIColor class]])
             {
                 // UIColor class
@@ -69,6 +97,13 @@ static CGFloat const kDefaultOpacity = 0.5f;
     
     // set the graident colours to the laery
     self.gradientLayer.colors = colors;
+    _barTintGradientColors = barTintGradientColors;
+}
+
+- (void)setGradientAngle:(CGFloat)gradientAngle
+{
+    self.gradientLayer.gradientAngle = gradientAngle;
+    _gradientAngle = gradientAngle;
 }
 
 #pragma mark - UIView
@@ -95,6 +130,14 @@ static CGFloat const kDefaultOpacity = 0.5f;
         // make sure the graident layer is at position 1
         [self.layer insertSublayer:self.gradientLayer atIndex:1];
     }
+}
+
+#pragma mark - Private
+
+- (void)performInit
+{
+    _gradientLayer = [CAGradientLayer layer];
+    self.opacity = .5f;
 }
 
 @end

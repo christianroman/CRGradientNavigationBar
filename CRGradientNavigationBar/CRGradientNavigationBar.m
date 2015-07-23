@@ -19,7 +19,14 @@
 
 static CGFloat const kDefaultOpacity = 0.5f;
 
+
 - (void)setBarTintGradientColors:(NSArray *)barTintGradientColors
+{
+    [self setBarTintGradientColors:barTintGradientColors duration:0];
+}
+
+
+- (void)setBarTintGradientColors:(NSArray *)barTintGradientColors  duration:(CFTimeInterval)duration
 {
     // create the gradient layer
     if (self.gradientLayer == nil) {
@@ -67,9 +74,50 @@ static CGFloat const kDefaultOpacity = 0.5f;
         }
     }
     
+    // setting animation
+    // seems like animation is inevitable, even you set duration to 0
+    [self.gradientLayer removeAnimationForKey:@"gradient"];
+    
+    CATransition *transition = [CATransition animation];
+    transition.duration = duration;
+    transition.timingFunction = [CAMediaTimingFunction
+                                 functionWithName:kCAMediaTimingFunctionEaseOut];
+    [self.gradientLayer addAnimation:transition forKey:@"gradient"];
+    
     // set the graident colours to the laery
     self.gradientLayer.colors = colors;
 }
+
+- (void)setBarTintGradientRotation:(CGFloat)rotationDegree
+{
+    [self setBarTintGradientRotation:rotationDegree duration:1];
+}
+
+- (void)setBarTintGradientRotation:(CGFloat)rotationDegree  duration:(CFTimeInterval)duration
+{
+    float radians = (rotationDegree / 180.0) * M_PI;
+    [self.gradientLayer removeAnimationForKey:@"rotation"];
+    
+    CATransition *transition = [CATransition animation];
+    transition.duration = duration;
+    transition.timingFunction = [CAMediaTimingFunction
+                                 functionWithName:kCAMediaTimingFunctionEaseOut];
+    [self.gradientLayer addAnimation:transition forKey:@"rotation"];
+    
+    float x = cosf(radians);
+    float y = sinf(radians);
+    self.gradientLayer.startPoint = CGPointMake(0.5-x*0.5, 0.5-y*0.5);
+    self.gradientLayer.endPoint = CGPointMake(0.5+x*0.5, 0.5+y*0.5);
+}
+
+#pragma mark - helpers
+
+
+-(NSArray*)colorGradientArrayFromColor:(UIColor*)c1  toColor:(UIColor*)c2
+{
+    return [NSArray arrayWithObjects:(id)c1.CGColor, (id)c2.CGColor, nil];
+}
+
 
 #pragma mark - UIView
 

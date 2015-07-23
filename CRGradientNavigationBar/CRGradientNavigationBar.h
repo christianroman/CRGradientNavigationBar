@@ -11,5 +11,11 @@
 @interface CRGradientNavigationBar : UINavigationBar
 
 - (void)setBarTintGradientColors:(NSArray *)barTintGradientColors;
+- (void)setBarTintGradientColors:(NSArray *)barTintGradientColors  duration:(CFTimeInterval)duration;
+
+- (NSArray*)colorGradientArrayFromColor:(UIColor*)c1  toColor:(UIColor*)c2;
+
+- (void)setBarTintGradientRotation:(CGFloat)rotationDegree;
+- (void)setBarTintGradientRotation:(CGFloat)rotationDegree  duration:(CFTimeInterval)duration;
 
 @end

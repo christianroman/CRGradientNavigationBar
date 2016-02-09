@@ -19,12 +19,33 @@
 
 static CGFloat const kDefaultOpacity = 0.5f;
 
+-(void)initGradientLayer {
+    self.gradientLayer = [CAGradientLayer layer];
+    self.gradientLayer.opacity = self.translucent ? kDefaultOpacity : 1.0f;
+}
+
+- (void)setGradientStartPoint:(CGPoint)start {
+    if (self.gradientLayer == nil) {
+        [self initGradientLayer];
+    }
+    
+    self.gradientLayer.startPoint = start;
+}
+
+- (void)setGradientEndPoint:(CGPoint)end
+{
+    if (self.gradientLayer == nil) {
+        [self initGradientLayer];
+    }
+    
+    self.gradientLayer.endPoint = end;
+}
+
 - (void)setBarTintGradientColors:(NSArray *)barTintGradientColors
 {
     // create the gradient layer
     if (self.gradientLayer == nil) {
-        self.gradientLayer = [CAGradientLayer layer];
-        self.gradientLayer.opacity = self.translucent ? kDefaultOpacity : 1.0f;
+        [self initGradientLayer];
     }
     
     NSMutableArray * colors = nil;

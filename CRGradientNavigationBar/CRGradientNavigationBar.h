@@ -11,5 +11,7 @@
 @interface CRGradientNavigationBar : UINavigationBar
 
 - (void)setBarTintGradientColors:(NSArray *)barTintGradientColors;
+- (void)setGradientStartPoint:(CGPoint)start;
+- (void)setGradientEndPoint:(CGPoint)end;
 
 @end
